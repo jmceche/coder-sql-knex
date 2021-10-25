@@ -11,7 +11,6 @@ const submitProduct = (e) => {
   const product = {
       title: document.querySelector('#title').value,
       price: document.querySelector('#price').value,
-      thumbnail: document.querySelector('#thumbnail').value,
   }
   socket.emit('submit_product', product);
 }
@@ -29,7 +28,7 @@ const sendMsg = (e) => {
 
 const renderMessages = (data) => {
   let date = new Date();
-  let html = data.map(item => `<p><span class="${userClass(item.user_id)}">${item.user}</span> <span class="timestamp">[${date.toLocaleString()}]</span>: <span class="user-msg">${item.msg}</span></p>`);
+  let html = data.map(item => `<p><span class="${userClass(item.user_id)}">${item.user}</span> <span class="timestamp">[${item.timestamp}]</span>: <span class="user-msg">${item.msg}</span></p>`);
   const body = document.querySelector('#chat-msgs')
   body.innerHTML = html.join("");
 }

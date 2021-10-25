@@ -3,10 +3,11 @@ import knex from 'knex';
 
 const db = knex(options);
 
-db.schema.createTable('cars', table => {
+db.schema.createTable('products', table => {
   table.increments('id');
   table.string('name');
-  table.integer('price')
+  table.integer('price');
+  table.string('thumbnail')
 })
   .then(() => console.log('table created'))
   .catch((err) => { console.log(err); throw err})
